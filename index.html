@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VEX.GG - Roblox Executor</title>
+  <style>
+    :root {
+      --primary: #00ffff;
+      --bg: #0b0c10;
+      --text: #cdd9e5;
+      --muted: #6e7a8a;
+      --accent: #00cccc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #0f1115;
+      border-bottom: 1px solid #1a1c21;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 40px;
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: var(--primary);
+      color: #000;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature {
+      background: #111;
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid #1e1e1e;
+    }
+
+    .feature h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #555;
+      border-top: 1px solid #1a1c21;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="assets/vex.gg.png" alt="VEX Logo">
+      <span>VEX.GG</span>
+    </div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#download">Download</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>VEX.GG Executor</h1>
+    <p>The ultimate Roblox script executor with speed, power, and total stealth. Optimized for performance and constantly updated.</p>
+    <a href="#download" class="btn">Download Now</a>
+  </section>
+
+  <section class="section" id="features">
+    <h2>Why VEX?</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>⚡ Ultra Fast</h3>
+        <p>Execute scripts in milliseconds with our optimized injection engine.</p>
+      </div>
+      <div class="feature">
+        <h3>🛡️ Undetectable</h3>
+        <p>Bypasses Roblox security with frequent stealth updates.</p>
+      </div>
+      <div class="feature">
+        <h3>🧠 Script Hub</h3>
+        <p>Includes built-in access to popular scripts and game tools.</p>
+      </div>
+      <div class="feature">
+        <h3>🔒 Secure</h3>
+        <p>Sandboxed environment to ensure safe execution and user protection.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero" id="download">
+    <h2>Get Started Now</h2>
+    <p>Click the button below to download the latest version of VEX.GG</p>
+    <a href="your-download-link.zip" class="btn">Download VEX.GG</a>
+  </section>
+
+  <footer>
+    &copy; 2025 VEX.GG — Not affiliated with Roblox Corporation.
+  </footer>
+
+</body>
+</html>
