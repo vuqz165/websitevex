@@ -25,7 +25,7 @@
       font-family: 'Orbitron', sans-serif;
       background: linear-gradient(135deg, #0e1a28, #06070a);
       color: var(--text);
-      overflow: hidden;
+      overflow-x: hidden;
       position: relative;
     }
 
@@ -119,6 +119,40 @@
       transform: scale(1.12);
     }
 
+    .feature-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .feature-box {
+      background: rgba(0, 255, 255, 0.05);
+      border: 2px solid rgba(0, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 2rem;
+      width: 300px;
+      box-shadow: 0 0 20px var(--shadow);
+      transition: 0.3s ease;
+    }
+
+    .feature-box:hover {
+      box-shadow: 0 0 40px var(--accent);
+      transform: scale(1.05);
+    }
+
+    .feature-box h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .feature-box p {
+      font-size: 0.95rem;
+      color: #cceeff;
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -147,6 +181,21 @@
     <h1>VEX.GG</h1>
     <p>Experience the most powerful and visually immersive Roblox executor on the web. Lightning fast. Stealthy. Designed for the elite.</p>
     <a href="#download" class="btn">Download Now</a>
+  </section>
+
+  <section class="feature-boxes" id="features">
+    <div class="feature-box">
+      <h3>Undetectable</h3>
+      <p>Bypasses the latest Roblox updates and anti-cheats with stealth-mode injection.</p>
+    </div>
+    <div class="feature-box">
+      <h3>High Performance</h3>
+      <p>Optimized executor core delivers ultra-fast script execution with low resource use.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Community Forum</h3>
+      <p>Join discussions, get help, and share scripts with others on our built-in forum (coming soon).</p>
+    </div>
   </section>
 
   <footer>
