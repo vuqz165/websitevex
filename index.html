@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VEX.GG - Next Gen Roblox Executor</title>
+  <title>VEX.GG - Advanced Roblox Executor</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #00ffff;
-      --bg-dark: #06070a;
-      --text-light: #e0f7ff;
-      --glow: #00f0ff;
-      --outline: white;
+      --secondary: #090d17;
+      --accent: #0ff;
+      --text: #dffbff;
+      --shadow: rgba(0, 255, 255, 0.4);
+      --hover-outline: white;
     }
 
     * {
@@ -22,10 +23,9 @@
 
     body {
       font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(135deg, #06070a, #0a0d13);
-      color: var(--text-light);
+      background: radial-gradient(circle at top left, #0e1a28, #06070a);
+      color: var(--text);
       overflow: hidden;
-      position: relative;
     }
 
     canvas#background {
@@ -40,71 +40,80 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.5rem 3rem;
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
+      background: rgba(5, 10, 20, 0.6);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 0 30px var(--shadow);
     }
 
     .logo {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      color: var(--primary);
-      letter-spacing: 2px;
+      color: var(--accent);
+      text-shadow: 0 0 15px var(--shadow);
     }
 
     nav a {
       margin-left: 2rem;
-      color: var(--text-light);
+      color: var(--text);
       text-decoration: none;
-      transition: 0.3s;
+      font-weight: 600;
+      position: relative;
+      transition: all 0.3s ease;
     }
 
     nav a:hover {
-      color: var(--primary);
+      color: var(--accent);
     }
 
     .hero {
       text-align: center;
-      padding: 10rem 2rem 5rem;
+      padding: 12rem 2rem 6rem;
     }
 
     .hero h1 {
-      font-size: 4rem;
-      color: var(--primary);
-      text-shadow: 0 0 20px var(--glow);
+      font-size: 5rem;
+      color: var(--accent);
+      text-shadow: 0 0 30px var(--shadow);
+      animation: pulseGlow 3s infinite alternate;
     }
 
     .hero p {
       margin-top: 1rem;
-      font-size: 1.2rem;
-      color: #9cc9d9;
+      font-size: 1.4rem;
+      color: #aad4e6;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
     }
 
     .btn {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       padding: 1rem 3rem;
-      background: var(--primary);
-      color: black;
+      background: var(--accent);
+      color: #000;
       font-weight: bold;
-      border-radius: 8px;
+      border-radius: 12px;
       text-decoration: none;
-      box-shadow: 0 0 20px var(--primary);
-      transition: 0.3s;
+      box-shadow: 0 0 25px var(--accent);
+      transition: 0.3s ease;
     }
 
     .btn:hover {
-      outline: 2px solid var(--outline);
-      box-shadow: 0 0 40px var(--glow);
-      transform: scale(1.05);
+      outline: 2px solid var(--hover-outline);
+      box-shadow: 0 0 50px var(--accent);
+      transform: scale(1.08);
     }
 
     footer {
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
-      color: #777;
+      color: #7c98ab;
+    }
+
+    @keyframes pulseGlow {
+      0% { text-shadow: 0 0 10px var(--shadow); }
+      100% { text-shadow: 0 0 30px var(--shadow); }
     }
   </style>
 </head>
@@ -115,12 +124,13 @@
     <nav>
       <a href="#features">Features</a>
       <a href="#download">Download</a>
+      <a href="#support">Support</a>
     </nav>
   </header>
 
   <section class="hero">
     <h1>VEX.GG</h1>
-    <p>The future of Roblox execution. Blazing-fast, secure, and visually stunning.</p>
+    <p>Experience the most powerful and visually immersive Roblox executor on the web. Lightning fast. Stealthy. Designed for the elite.</p>
     <a href="#download" class="btn">Download Now</a>
   </section>
 
@@ -148,23 +158,23 @@
           x: Math.random() * width,
           y: Math.random() * height,
           r: Math.random() * 2 + 1,
-          dx: (Math.random() - 0.5) * 0.5,
-          dy: Math.random() * 0.5 + 0.2
+          dx: (Math.random() - 0.5) * 0.4,
+          dy: Math.random() * 0.6 + 0.3
         });
       }
       return arr;
     }
 
-    particles = createParticles(200);
+    particles = createParticles(250);
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
       for (let p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0,255,255,0.7)';
+        ctx.fillStyle = 'rgba(0,255,255,0.6)';
         ctx.shadowColor = '#00ffff';
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 12;
         ctx.fill();
 
         p.x += p.dx;
