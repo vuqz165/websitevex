@@ -4,191 +4,173 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vex.gg - Roblox Executor</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
   <style>
-    body {
-      background: url('https://wallpapercave.com/wp/wp2533041.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #00bfff;
-      font-family: 'Orbitron', sans-serif;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      color: white;
+      overflow-x: hidden;
+      background: #0c0c0c;
+    }
+
+    .background {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #000000, #0f0f0f);
+      z-index: -1;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -2;
+    }
+
+    header {
+      padding: 4rem 2rem 2rem;
       text-align: center;
+      background: rgba(0, 0, 0, 0.7);
     }
-    header, footer {
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.7);
+
+    header h1 {
+      font-size: 4rem;
+      color: #00ffcc;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px #00ffcc;
     }
+
+    header p {
+      font-size: 1.5rem;
+      color: #cccccc;
+      margin-bottom: 2rem;
+    }
+
     .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #00bfff;
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-      margin-top: 10px;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      margin: 1rem;
+      color: black;
+      background: #00ffcc;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00ffcc;
+      transition: 0.3s ease;
     }
-    .auth-container {
-      display: flex;
-      justify-content: space-around;
-      padding: 20px;
+
+    .btn:hover {
+      background: #00c0a0;
+      box-shadow: 0 0 25px #00ffcc;
     }
-    .auth-form {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      border-radius: 10px;
+
+    .section {
+      padding: 5rem 2rem;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.4);
     }
-    .auth-form input, .auth-form button {
-      display: block;
-      width: 90%;
-      margin: 10px auto;
-      padding: 10px;
-      font-size: 16px;
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #00ffcc;
+      text-shadow: 0 0 5px #00ffcc;
     }
-    #user-info {
-      margin-top: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      border-radius: 10px;
-      display: none;
+
+    .features {
+      max-width: 900px;
+      margin: auto;
+      font-size: 1.2rem;
+      line-height: 2;
+      color: #cccccc;
     }
-    #forum {
-      margin-top: 40px;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 10px;
-    }
-    #forum textarea {
-      width: 90%;
-      height: 80px;
-      margin-bottom: 10px;
-    }
-    #posts {
-      margin-top: 20px;
-    }
-    .post {
-      background: #111;
-      padding: 10px;
-      margin: 5px auto;
-      width: 80%;
-      border-radius: 5px;
+
+    footer {
+      padding: 1rem;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
+  <div class="background"></div>
+  <canvas id="bg"></canvas>
+
   <header>
     <h1>Vex.gg</h1>
-    <p class="subtitle">Unleash your power with the most advanced Roblox Executor</p>
-    <a href="#" class="btn">Download Vex.gg</a>
-    <a href="https://discord.gg/YOUR_DISCORD" class="btn" target="_blank">Join Discord</a>
+    <p>The Most Powerful Roblox Executor Ever</p>
+    <button class="btn" onclick="window.location.href='YOUR_DOWNLOAD_LINK_HERE'">🚀 Download Vex.gg</button>
+    <button class="btn" onclick="window.location.href='https://discord.gg/YOUR_DISCORD_INVITE'">💬 Join Our Discord</button>
   </header>
 
-  <section class="auth-container">
-    <form class="auth-form" id="login-form">
-      <h3>Login</h3>
-      <input type="email" placeholder="Email" id="login-email" required />
-      <input type="password" placeholder="Password" id="login-password" required />
-      <button type="submit">Login</button>
-    </form>
-
-    <form class="auth-form" id="signup-form">
-      <h3>Sign Up</h3>
-      <input type="email" placeholder="Email" id="signup-email" required />
-      <input type="password" placeholder="Password" id="signup-password" required />
-      <button type="submit">Sign Up</button>
-    </form>
-  </section>
-
-  <div id="user-info">
-    <h3>Welcome, <span id="user-email"></span>!</h3>
-    <button onclick="logout()">Logout</button>
-  </div>
-
-  <section id="forum" style="display:none;">
-    <h2>Vex.gg Forum</h2>
-    <textarea id="post-content" placeholder="Share your thoughts..."></textarea>
-    <button onclick="submitPost()">Post</button>
-    <div id="posts"></div>
+  <section class="section">
+    <h2>Why Vex.gg?</h2>
+    <div class="features">
+      ✅ Blazing Fast Injection Engine<br>
+      ✅ Bypasses Most Anti-Cheat Systems<br>
+      ✅ LuaU & Synapse-Compatible<br>
+      ✅ Modern & Clean User Interface<br>
+      ✅ Safe, Secure, and 100% Free<br>
+      ✅ Frequent Updates with New Features<br>
+      ✅ Supported by a Friendly Community
+    </div>
   </section>
 
   <footer>
-    &copy; 2025 Vex.gg — Not affiliated with Roblox Corporation.
+    &copy; 2025 Vex.gg. All rights reserved.
   </footer>
 
   <script>
-    const SUPABASE_URL = "https://udbxkgknxyrxnfvubfhu.supabase.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkYnhrZ2tueHlyeG5mZnViZmh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NjE2NTksImV4cCI6MjA2NjQzNzY1OX0.k4yNWkbo6xhuBsIqG5JglwhdKf9HI8TnelxsFFw3JQ4";
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    async function checkUser() {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        document.getElementById("user-info").style.display = "block";
-        document.getElementById("user-email").innerText = user.email;
-        document.querySelector(".auth-container").style.display = "none";
-        document.getElementById("forum").style.display = "block";
-        loadPosts();
-      }
-    }
-
-    async function logout() {
-      await supabase.auth.signOut();
-      location.reload();
-    }
-
-    async function submitPost() {
-      const content = document.getElementById("post-content").value;
-      if (!content) return alert("Post cannot be empty");
-      const user = (await supabase.auth.getUser()).data.user;
-      const { error } = await supabase.from("posts").insert([{ content, author: user.email }]);
-      if (error) return alert("Error posting: " + error.message);
-      document.getElementById("post-content").value = "";
-      loadPosts();
-    }
-
-    async function loadPosts() {
-      const { data, error } = await supabase.from("posts").select("*").order("created_at", { ascending: false });
-      const postsContainer = document.getElementById("posts");
-      postsContainer.innerHTML = "";
-      data.forEach(post => {
-        const div = document.createElement("div");
-        div.className = "post";
-        div.innerHTML = `<strong>${post.author}</strong><p>${post.content}</p>`;
-        postsContainer.appendChild(div);
+    let particles = [];
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2 + 1,
+        speedX: (Math.random() - 0.5) * 1,
+        speedY: (Math.random() - 0.5) * 1
       });
     }
 
-    document.getElementById("signup-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("signup-email").value;
-      const password = document.getElementById("signup-password").value;
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
 
-      const { error } = await supabase.auth.signUp({ email, password });
-      if (error) {
-        alert("Signup error: " + error.message);
-      } else {
-        alert("Signup successful! Check your email to confirm.");
-      }
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+
+        ctx.fillStyle = '#00ffcc';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     });
-
-    document.getElementById("login-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("login-email").value;
-      const password = document.getElementById("login-password").value;
-
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) {
-        alert("Login error: " + error.message);
-      } else {
-        alert("Login successful!");
-        checkUser();
-      }
-    });
-
-    checkUser();
   </script>
 </body>
 </html>
