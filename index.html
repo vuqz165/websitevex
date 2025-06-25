@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VEX.GG - Advanced Roblox Executor</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <style>
@@ -11,7 +11,6 @@
       --secondary: #090d17;
       --accent: #0ff;
       --text: #dffbff;
-      --shadow: rgba(0, 255, 255, 0.4);
       --hover-outline: white;
     }
 
@@ -43,7 +42,7 @@
       padding: 1.5rem 3rem;
       background: rgba(5, 10, 20, 0.6);
       backdrop-filter: blur(20px);
-      box-shadow: 0 0 30px var(--shadow);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
       z-index: 10;
       position: relative;
     }
@@ -52,7 +51,6 @@
       font-size: 2.5rem;
       font-weight: 700;
       color: var(--accent);
-      text-shadow: 0 0 15px var(--shadow);
     }
 
     nav a {
@@ -87,8 +85,6 @@
     .hero h1 {
       font-size: 6rem;
       color: var(--accent);
-      text-shadow: 0 0 40px var(--shadow);
-      animation: glowFlicker 2.5s infinite ease-in-out;
     }
 
     .hero p {
@@ -100,16 +96,9 @@
       margin-right: auto;
     }
 
-    .btn-group {
-      margin-top: 2.5rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
     .btn {
-      padding: 1rem 2.5rem;
+      margin-top: 2.5rem;
+      padding: 1rem 3rem;
       background: var(--accent);
       color: #000;
       font-weight: bold;
@@ -118,7 +107,6 @@
       box-shadow: 0 0 25px var(--accent);
       transition: 0.3s ease;
       font-size: 1.1rem;
-      position: relative;
     }
 
     .btn:hover {
@@ -127,7 +115,7 @@
       transform: scale(1.12);
     }
 
-    .feature-boxes {
+    .feature-boxes, .auth-section {
       display: flex;
       justify-content: center;
       gap: 2rem;
@@ -142,7 +130,7 @@
       border-radius: 16px;
       padding: 2rem;
       width: 300px;
-      box-shadow: 0 0 20px var(--shadow);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
       transition: 0.3s ease;
     }
 
@@ -161,19 +149,45 @@
       color: #cceeff;
     }
 
-    #download {
+    .auth-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      width: 300px;
+      color: #fff;
+    }
+
+    .auth-box input {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 8px;
+      background: #0e1a28;
+      color: #0ff;
+    }
+
+    .forum {
+      padding: 3rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .forum h2 {
       text-align: center;
-      padding: 5rem 2rem;
+      margin-bottom: 1rem;
     }
 
-    #download h2 {
-      font-size: 3rem;
+    .forum textarea {
+      width: 100%;
+      height: 100px;
+      padding: 1rem;
+      border-radius: 8px;
+      border: none;
+      background: #0e1a28;
       color: var(--accent);
-      margin-bottom: 1.5rem;
-    }
-
-    #download a.btn {
-      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
 
     footer {
@@ -181,11 +195,6 @@
       padding: 2rem;
       font-size: 0.9rem;
       color: #7c98ab;
-    }
-
-    @keyframes glowFlicker {
-      0%, 100% { text-shadow: 0 0 10px var(--shadow), 0 0 20px var(--accent), 0 0 30px var(--accent); }
-      50% { text-shadow: 0 0 30px var(--shadow), 0 0 40px var(--accent), 0 0 60px var(--accent); }
     }
   </style>
 </head>
@@ -195,18 +204,16 @@
     <div class="logo">VEX.GG</div>
     <nav>
       <a href="#features">Features</a>
-      <a href="#download">Download</a>
-      <a href="#support">Support</a>
+      <a href="#forum">Forum</a>
+      <a href="#auth">Login</a>
+      <a href="https://discord.gg/T7g9nvBMJB" target="_blank">Discord</a>
     </nav>
   </header>
 
   <section class="hero">
     <h1>VEX.GG</h1>
     <p>Experience the most powerful and visually immersive Roblox executor on the web. Lightning fast. Stealthy. Designed for the elite.</p>
-    <div class="btn-group">
-      <a href="#download" class="btn">Download Now</a>
-      <a href="https://discord.gg/T7g9nvBMJB" target="_blank" class="btn">Join Discord</a>
-    </div>
+    <a href="#auth" class="btn">Get Started</a>
   </section>
 
   <section class="feature-boxes" id="features">
@@ -220,16 +227,29 @@
     </div>
     <div class="feature-box">
       <h3>Community Forum</h3>
-      <p>Join discussions, get help, and share scripts with others on our built-in forum. 
-        <a style="display:block;margin-top:1rem;text-decoration:underline;font-weight:bold;" href="#">Visit Forum →</a>
-      </p>
+      <p>Join discussions, get help, and share scripts with others on our built-in forum.</p>
     </div>
   </section>
 
-  <section id="download">
-    <h2>Download VEX.GG</h2>
-    <p>Click the button below to get started with the most advanced executor.</p>
-    <a href="#" class="btn">Download Now</a>
+  <section class="forum" id="forum">
+    <h2>Forum</h2>
+    <textarea placeholder="Share your thoughts or scripts..."></textarea>
+    <a href="#" class="btn">Post</a>
+  </section>
+
+  <section class="auth-section" id="auth">
+    <div class="auth-box">
+      <h3>Login</h3>
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Password" />
+      <a href="#" class="btn">Login</a>
+    </div>
+    <div class="auth-box">
+      <h3>Sign Up</h3>
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Password" />
+      <a href="#" class="btn">Sign Up</a>
+    </div>
   </section>
 
   <footer>
@@ -238,56 +258,50 @@
 
   <script>
     const canvas = document.getElementById('background');
-    const ctx = canvas.getContext('2d');
-    let width, height, particles;
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-    function resize() {
+    let width, height, particles = [];
+
+    function resizeCanvas() {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-    }
+      particles = [];
 
-    window.addEventListener('resize', resize);
-    resize();
-
-    function createParticles(count) {
-      const arr = [];
-      for (let i = 0; i < count; i++) {
-        arr.push({
+      const density = Math.floor((width * height) / 25000);
+      for (let i = 0; i < density; i++) {
+        particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          r: Math.random() * 2 + 1,
-          dx: (Math.random() - 0.5) * 0.4,
-          dy: Math.random() * 0.6 + 0.3,
-          opacity: Math.random() * 0.8 + 0.2
+          r: Math.random() * 1 + 0.5,
+          dx: (Math.random() - 0.5) * 0.3,
+          dy: Math.random() * 0.4 + 0.1,
+          alpha: Math.random() * 0.4 + 0.2
         });
       }
-      return arr;
     }
 
-    particles = createParticles(350);
-
-    function draw() {
+    function drawParticles() {
       ctx.clearRect(0, 0, width, height);
-      ctx.globalCompositeOperation = 'lighter';
-      for (let p of particles) {
+      for (const p of particles) {
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0,255,255,${p.opacity})`;
-        ctx.shadowColor = '#0ff';
-        ctx.shadowBlur = 16;
+        ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+        ctx.fillStyle = `rgba(0,255,255,${p.alpha})`;
         ctx.fill();
 
         p.x += p.dx;
         p.y += p.dy;
 
-        if (p.y > height || p.x > width || p.x < 0) {
+        if (p.y > height || p.x < 0 || p.x > width) {
           p.x = Math.random() * width;
           p.y = 0;
         }
       }
-      requestAnimationFrame(draw);
+      requestAnimationFrame(drawParticles);
     }
-    draw();
+
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+    resizeCanvas();
+    drawParticles();
   </script>
 </body>
 </html>
