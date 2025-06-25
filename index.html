@@ -8,7 +8,7 @@
     :root {
       --primary: #00ffff;
       --bg: #0b0c10;
-      --text: #cdd9e5;
+      --text: #d6faff;
       --muted: #6e7a8a;
       --accent: #00cccc;
     }
@@ -21,48 +21,72 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: var(--bg);
+      background: linear-gradient(120deg, #0b0c10, #10141a);
       color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background Particle Animation */
+    .particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particles span {
+      position: absolute;
+      display: block;
+      width: 2px;
+      height: 2px;
+      background: var(--primary);
+      animation: animateParticles 20s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes animateParticles {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(100vh) scale(0.3);
+        opacity: 0;
+      }
     }
 
     header {
       width: 100%;
-      padding: 1rem 2rem;
+      padding: 1.5rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #0f1115;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid #1a1c21;
-      z-index: 100;
-      position: relative;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     .logo {
       display: flex;
       align-items: center;
-    }
-
-    .logo img {
-      width: 40px;
-      margin-right: 10px;
-    }
-
-    .logo span {
-      font-size: 1.5rem;
-      font-weight: bold;
+      font-size: 1.8rem;
       color: var(--primary);
+      font-weight: bold;
+      letter-spacing: 2px;
     }
 
     nav a {
-      margin-left: 20px;
       color: var(--text);
+      margin-left: 2rem;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.2s;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
@@ -71,50 +95,57 @@
 
     .hero {
       text-align: center;
-      padding: 6rem 2rem 4rem;
-      max-width: 800px;
-      z-index: 1;
+      padding: 7rem 2rem 5rem;
+      animation: fadeInUp 1s ease-in-out;
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       color: var(--primary);
-      margin-bottom: 1rem;
+      animation: glowText 2s infinite alternate;
     }
 
     .hero p {
-      font-size: 1.1rem;
+      margin-top: 1rem;
+      font-size: 1.2rem;
       color: var(--muted);
-      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .btn {
+      margin-top: 2rem;
       display: inline-block;
-      padding: 0.9rem 2rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      color: black;
+      font-weight: bold;
       background: var(--primary);
-      color: #000;
-      font-weight: 600;
-      border-radius: 8px;
+      border-radius: 10px;
       text-decoration: none;
-      transition: background 0.3s;
+      box-shadow: 0 0 15px var(--primary);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .btn:hover {
-      background: var(--accent);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--accent);
     }
 
     .section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      width: 100%;
-      z-index: 1;
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      animation: fadeIn 1.2s ease forwards;
     }
 
     .section h2 {
       text-align: center;
-      font-size: 2rem;
       color: var(--primary);
+      font-size: 2.5rem;
       margin-bottom: 2rem;
+      animation: glowText 2s infinite alternate;
     }
 
     .features {
@@ -124,114 +155,129 @@
     }
 
     .feature {
-      background: #111;
-      padding: 1.5rem;
-      border-radius: 10px;
-      border: 1px solid #1e1e1e;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #1f1f1f;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px var(--primary);
     }
 
     .feature h3 {
-      margin-bottom: 0.5rem;
       color: var(--primary);
-    }
-
-    .feature p {
-      color: var(--muted);
-      font-size: 0.95rem;
+      margin-bottom: 1rem;
     }
 
     footer {
-      padding: 2rem;
       text-align: center;
+      padding: 2rem;
       font-size: 0.85rem;
       color: #555;
-      border-top: 1px solid #1a1c21;
-      margin-top: 4rem;
-      z-index: 1;
     }
 
-    /* Snow animation */
-    .snow {
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background-image: radial-gradient(white 1px, transparent 0);
-      background-size: 10px 10px;
-      animation: snow 30s linear infinite;
-      opacity: 0.25;
-    }
-
-    @keyframes snow {
+    @keyframes fadeInUp {
       0% {
-        background-position: 0 0, 0 0, 0 0;
+        opacity: 0;
+        transform: translateY(40px);
       }
       100% {
-        background-position: 500px 1000px, 300px 1000px, 700px 1000px;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes glowText {
+      0% {
+        text-shadow: 0 0 10px var(--primary);
+      }
+      100% {
+        text-shadow: 0 0 20px var(--accent), 0 0 30px var(--primary);
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Snow Overlay -->
-  <div class="snow"></div>
+  <!-- Particle Effect -->
+  <div class="particles">
+    <!-- 50 floating particles -->
+    <script>
+      for (let i = 0; i < 50; i++) {
+        const span = document.createElement('span');
+        span.style.left = Math.random() * 100 + 'vw';
+        span.style.animationDuration = 10 + Math.random() * 20 + 's';
+        span.style.opacity = Math.random();
+        document.querySelector('.particles').appendChild(span);
+      }
+    </script>
+  </div>
 
   <!-- Header -->
   <header>
-    <div class="logo">
-      <img src="vex.gg.png" alt="VEX Logo">
-      <span>VEX.GG</span>
-    </div>
+    <div class="logo">VEX.GG</div>
     <nav>
       <a href="#features">Features</a>
       <a href="#download">Download</a>
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
-    <h1>VEX.GG Executor</h1>
-    <p>The ultimate Roblox script executor with speed, power, and total stealth. Optimized for performance and constantly updated.</p>
-    <a href="#download" class="btn">Download Now</a>
+    <h1>VEX.GG</h1>
+    <p>The most powerful and stealthy Roblox executor ever built. Free, fast, and unstoppable.</p>
+    <a class="btn" href="#download">Download Now</a>
   </section>
 
-  <!-- Features Section -->
+  <!-- Features -->
   <section class="section" id="features">
-    <h2>Why VEX?</h2>
+    <h2>Insane Features</h2>
     <div class="features">
       <div class="feature">
-        <h3>⚡ Ultra Fast</h3>
-        <p>Execute scripts in milliseconds with our optimized injection engine.</p>
-      </div>
-      <div class="feature">
-        <h3>🛡️ Undetectable</h3>
-        <p>Bypasses Roblox security with frequent stealth updates.</p>
+        <h3>⚡ Instant Execution</h3>
+        <p>Run scripts faster than any other executor. Lag-free performance.</p>
       </div>
       <div class="feature">
         <h3>🧠 Script Hub</h3>
-        <p>Includes built-in access to popular scripts and game tools.</p>
+        <p>Massive library of popular scripts, auto-updated daily.</p>
       </div>
       <div class="feature">
-        <h3>🔒 Secure</h3>
-        <p>Sandboxed environment to ensure safe execution and user protection.</p>
+        <h3>🛡️ Anti-Detection</h3>
+        <p>Bypass all known Roblox defenses with cutting-edge stealth.</p>
+      </div>
+      <div class="feature">
+        <h3>🔒 Secure & Encrypted</h3>
+        <p>Run scripts in a sandboxed environment. Your safety is #1.</p>
       </div>
     </div>
   </section>
 
-  <!-- Download Section -->
+  <!-- Download -->
   <section class="hero" id="download">
-    <h2>Get Started Now</h2>
-    <p>Click the button below to download the latest version of VEX.GG</p>
-    <a href="your-download-link.zip" class="btn">Download VEX.GG</a>
+    <h2>Download VEX.GG</h2>
+    <p>One click to unlock infinite potential. The future of exploiting is here.</p>
+    <a class="btn" href="your-download-link.zip">Download VEX</a>
   </section>
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 VEX.GG — Not affiliated with Roblox Corporation.
+    &copy; 2025 VEX.GG — All rights reserved. Not affiliated with Roblox Corporation.
   </footer>
 
 </body>
