@@ -11,6 +11,7 @@
       --text: #d6faff;
       --muted: #6e7a8a;
       --accent: #00cccc;
+      --outline: white;
     }
 
     * {
@@ -21,41 +22,10 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(120deg, #0b0c10, #10141a);
+      background: radial-gradient(ellipse at top left, #0f1017, #000000 100%);
       color: var(--text);
       overflow-x: hidden;
       position: relative;
-    }
-
-    /* Background Particle Animation */
-    .particles {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .particles span {
-      position: absolute;
-      display: block;
-      width: 2px;
-      height: 2px;
-      background: var(--primary);
-      animation: animateParticles 20s linear infinite;
-      opacity: 0.6;
-    }
-
-    @keyframes animateParticles {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.6;
-      }
-      100% {
-        transform: translateY(100vh) scale(0.3);
-        opacity: 0;
-      }
     }
 
     header {
@@ -73,8 +43,6 @@
     }
 
     .logo {
-      display: flex;
-      align-items: center;
       font-size: 1.8rem;
       color: var(--primary);
       font-weight: bold;
@@ -95,8 +63,10 @@
 
     .hero {
       text-align: center;
-      padding: 7rem 2rem 5rem;
+      padding: 8rem 2rem 5rem;
       animation: fadeInUp 1s ease-in-out;
+      position: relative;
+      z-index: 2;
     }
 
     .hero h1 {
@@ -125,12 +95,13 @@
       border-radius: 10px;
       text-decoration: none;
       box-shadow: 0 0 15px var(--primary);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s, outline 0.3s;
     }
 
     .btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 25px var(--accent);
+      box-shadow: 0 0 25px var(--accent), 0 0 5px var(--outline);
+      outline: 2px solid var(--outline);
     }
 
     .section {
@@ -138,6 +109,8 @@
       max-width: 1100px;
       margin: 0 auto;
       animation: fadeIn 1.2s ease forwards;
+      position: relative;
+      z-index: 2;
     }
 
     .section h2 {
@@ -211,18 +184,52 @@
         text-shadow: 0 0 20px var(--accent), 0 0 30px var(--primary);
       }
     }
+
+    /* Custom particle background with glow */
+    .particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .particles span {
+      position: absolute;
+      display: block;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+      animation: floatParticle linear infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes floatParticle {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+      }
+      to {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
 
   <!-- Particle Effect -->
   <div class="particles">
-    <!-- 50 floating particles -->
     <script>
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 80; i++) {
         const span = document.createElement('span');
         span.style.left = Math.random() * 100 + 'vw';
-        span.style.animationDuration = 10 + Math.random() * 20 + 's';
+        span.style.top = Math.random() * -100 + 'vh';
+        span.style.animationDuration = (10 + Math.random() * 10) + 's';
         span.style.opacity = Math.random();
         document.querySelector('.particles').appendChild(span);
       }
