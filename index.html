@@ -81,7 +81,7 @@
 
     .hero {
       text-align: center;
-      padding: 12rem 2rem 6rem;
+      padding: 10rem 2rem 5rem;
     }
 
     .hero h1 {
@@ -111,6 +111,7 @@
       box-shadow: 0 0 25px var(--accent);
       transition: 0.3s ease;
       font-size: 1.1rem;
+      position: relative;
     }
 
     .btn:hover {
@@ -194,7 +195,7 @@
     </div>
     <div class="feature-box">
       <h3>Community Forum</h3>
-      <p>Join discussions, get help, and share scripts with others on our built-in forum (coming soon).</p>
+      <p>Join discussions, get help, and share scripts with others on our built-in forum. <a style="display:block;margin-top:1rem;text-decoration:underline;font-weight:bold;" href="#">Visit Forum →</a></p>
     </div>
   </section>
 
@@ -223,7 +224,8 @@
           y: Math.random() * height,
           r: Math.random() * 2 + 1,
           dx: (Math.random() - 0.5) * 0.4,
-          dy: Math.random() * 0.6 + 0.3
+          dy: Math.random() * 0.6 + 0.3,
+          opacity: Math.random() * 0.8 + 0.2
         });
       }
       return arr;
@@ -233,10 +235,11 @@
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
+      ctx.globalCompositeOperation = 'lighter';
       for (let p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0,255,255,0.5)';
+        ctx.fillStyle = `rgba(0,255,255,${p.opacity})`;
         ctx.shadowColor = '#0ff';
         ctx.shadowBlur = 16;
         ctx.fill();
