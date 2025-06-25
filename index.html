@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VEX.GG - Roblox Executor</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VEX.GG - Next Gen Roblox Executor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #00ffff;
-      --bg: #0b0c10;
-      --text: #d6faff;
-      --muted: #6e7a8a;
-      --accent: #00cccc;
+      --bg-dark: #06070a;
+      --text-light: #e0f7ff;
+      --glow: #00f0ff;
       --outline: white;
     }
 
@@ -21,40 +21,41 @@
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(ellipse at top left, #0f1017, #000000 100%);
-      color: var(--text);
-      overflow-x: hidden;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #06070a, #0a0d13);
+      color: var(--text-light);
+      overflow: hidden;
       position: relative;
     }
 
+    canvas#background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
     header {
-      width: 100%;
-      padding: 1.5rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 1.5rem 3rem;
       background: rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid #1a1c21;
-      position: sticky;
-      top: 0;
-      z-index: 10;
     }
 
     .logo {
-      font-size: 1.8rem;
+      font-size: 2rem;
+      font-weight: 700;
       color: var(--primary);
-      font-weight: bold;
       letter-spacing: 2px;
     }
 
     nav a {
-      color: var(--text);
       margin-left: 2rem;
+      color: var(--text-light);
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
+      transition: 0.3s;
     }
 
     nav a:hover {
@@ -63,180 +64,52 @@
 
     .hero {
       text-align: center;
-      padding: 8rem 2rem 5rem;
-      animation: fadeInUp 1s ease-in-out;
-      position: relative;
-      z-index: 2;
+      padding: 10rem 2rem 5rem;
     }
 
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 4rem;
       color: var(--primary);
-      animation: glowText 2s infinite alternate;
+      text-shadow: 0 0 20px var(--glow);
     }
 
     .hero p {
       margin-top: 1rem;
       font-size: 1.2rem;
-      color: var(--muted);
-      max-width: 700px;
+      color: #9cc9d9;
+      max-width: 800px;
       margin-left: auto;
       margin-right: auto;
     }
 
     .btn {
       margin-top: 2rem;
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
+      padding: 1rem 3rem;
+      background: var(--primary);
       color: black;
       font-weight: bold;
-      background: var(--primary);
-      border-radius: 10px;
+      border-radius: 8px;
       text-decoration: none;
-      box-shadow: 0 0 15px var(--primary);
-      transition: transform 0.3s, box-shadow 0.3s, outline 0.3s;
+      box-shadow: 0 0 20px var(--primary);
+      transition: 0.3s;
     }
 
     .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px var(--accent), 0 0 5px var(--outline);
       outline: 2px solid var(--outline);
-    }
-
-    .section {
-      padding: 5rem 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      animation: fadeIn 1.2s ease forwards;
-      position: relative;
-      z-index: 2;
-    }
-
-    .section h2 {
-      text-align: center;
-      color: var(--primary);
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      animation: glowText 2s infinite alternate;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .feature {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid #1f1f1f;
-      border-radius: 16px;
-      padding: 2rem;
-      text-align: center;
-      backdrop-filter: blur(20px);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .feature:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 20px var(--primary);
-    }
-
-    .feature h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
+      box-shadow: 0 0 40px var(--glow);
+      transform: scale(1.05);
     }
 
     footer {
       text-align: center;
       padding: 2rem;
-      font-size: 0.85rem;
-      color: #555;
-    }
-
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes glowText {
-      0% {
-        text-shadow: 0 0 10px var(--primary);
-      }
-      100% {
-        text-shadow: 0 0 20px var(--accent), 0 0 30px var(--primary);
-      }
-    }
-
-    /* Custom particle background with glow */
-    .particles {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    .particles span {
-      position: absolute;
-      display: block;
-      width: 3px;
-      height: 3px;
-      border-radius: 50%;
-      background: var(--primary);
-      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
-      animation: floatParticle linear infinite;
-      opacity: 0.5;
-    }
-
-    @keyframes floatParticle {
-      from {
-        transform: translateY(0) scale(1);
-        opacity: 0.5;
-      }
-      to {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 0;
-      }
+      font-size: 0.9rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
-
-  <!-- Particle Effect -->
-  <div class="particles">
-    <script>
-      for (let i = 0; i < 80; i++) {
-        const span = document.createElement('span');
-        span.style.left = Math.random() * 100 + 'vw';
-        span.style.top = Math.random() * -100 + 'vh';
-        span.style.animationDuration = (10 + Math.random() * 10) + 's';
-        span.style.opacity = Math.random();
-        document.querySelector('.particles').appendChild(span);
-      }
-    </script>
-  </div>
-
-  <!-- Header -->
+  <canvas id="background"></canvas>
   <header>
     <div class="logo">VEX.GG</div>
     <nav>
@@ -245,47 +118,66 @@
     </nav>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
     <h1>VEX.GG</h1>
-    <p>The most powerful and stealthy Roblox executor ever built. Free, fast, and unstoppable.</p>
-    <a class="btn" href="#download">Download Now</a>
+    <p>The future of Roblox execution. Blazing-fast, secure, and visually stunning.</p>
+    <a href="#download" class="btn">Download Now</a>
   </section>
 
-  <!-- Features -->
-  <section class="section" id="features">
-    <h2>Insane Features</h2>
-    <div class="features">
-      <div class="feature">
-        <h3>⚡ Instant Execution</h3>
-        <p>Run scripts faster than any other executor. Lag-free performance.</p>
-      </div>
-      <div class="feature">
-        <h3>🧠 Script Hub</h3>
-        <p>Massive library of popular scripts, auto-updated daily.</p>
-      </div>
-      <div class="feature">
-        <h3>🛡️ Anti-Detection</h3>
-        <p>Bypass all known Roblox defenses with cutting-edge stealth.</p>
-      </div>
-      <div class="feature">
-        <h3>🔒 Secure & Encrypted</h3>
-        <p>Run scripts in a sandboxed environment. Your safety is #1.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Download -->
-  <section class="hero" id="download">
-    <h2>Download VEX.GG</h2>
-    <p>One click to unlock infinite potential. The future of exploiting is here.</p>
-    <a class="btn" href="your-download-link.zip">Download VEX</a>
-  </section>
-
-  <!-- Footer -->
   <footer>
-    &copy; 2025 VEX.GG — All rights reserved. Not affiliated with Roblox Corporation.
+    &copy; 2025 VEX.GG — All rights reserved.
   </footer>
 
+  <script>
+    const canvas = document.getElementById('background');
+    const ctx = canvas.getContext('2d');
+    let width, height, particles;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    function createParticles(count) {
+      const arr = [];
+      for (let i = 0; i < count; i++) {
+        arr.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2 + 1,
+          dx: (Math.random() - 0.5) * 0.5,
+          dy: Math.random() * 0.5 + 0.2
+        });
+      }
+      return arr;
+    }
+
+    particles = createParticles(200);
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      for (let p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0,255,255,0.7)';
+        ctx.shadowColor = '#00ffff';
+        ctx.shadowBlur = 10;
+        ctx.fill();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.y > height || p.x > width || p.x < 0) {
+          p.x = Math.random() * width;
+          p.y = 0;
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
 </body>
 </html>
