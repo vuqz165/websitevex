@@ -26,6 +26,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      overflow-x: hidden;
     }
 
     header {
@@ -36,6 +37,8 @@
       align-items: center;
       background-color: #0f1115;
       border-bottom: 1px solid #1a1c21;
+      z-index: 100;
+      position: relative;
     }
 
     .logo {
@@ -70,6 +73,7 @@
       text-align: center;
       padding: 6rem 2rem 4rem;
       max-width: 800px;
+      z-index: 1;
     }
 
     .hero h1 {
@@ -103,6 +107,7 @@
       padding: 4rem 2rem;
       max-width: 1000px;
       width: 100%;
+      z-index: 1;
     }
 
     .section h2 {
@@ -142,11 +147,40 @@
       color: #555;
       border-top: 1px solid #1a1c21;
       margin-top: 4rem;
+      z-index: 1;
+    }
+
+    /* Snow animation */
+    .snow {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background-image: radial-gradient(white 1px, transparent 0);
+      background-size: 10px 10px;
+      animation: snow 30s linear infinite;
+      opacity: 0.25;
+    }
+
+    @keyframes snow {
+      0% {
+        background-position: 0 0, 0 0, 0 0;
+      }
+      100% {
+        background-position: 500px 1000px, 300px 1000px, 700px 1000px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Snow Overlay -->
+  <div class="snow"></div>
+
+  <!-- Header -->
   <header>
     <div class="logo">
       <img src="vex.gg.png" alt="VEX Logo">
@@ -158,12 +192,14 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
     <h1>VEX.GG Executor</h1>
     <p>The ultimate Roblox script executor with speed, power, and total stealth. Optimized for performance and constantly updated.</p>
     <a href="#download" class="btn">Download Now</a>
   </section>
 
+  <!-- Features Section -->
   <section class="section" id="features">
     <h2>Why VEX?</h2>
     <div class="features">
@@ -186,12 +222,14 @@
     </div>
   </section>
 
+  <!-- Download Section -->
   <section class="hero" id="download">
     <h2>Get Started Now</h2>
     <p>Click the button below to download the latest version of VEX.GG</p>
     <a href="your-download-link.zip" class="btn">Download VEX.GG</a>
   </section>
 
+  <!-- Footer -->
   <footer>
     &copy; 2025 VEX.GG — Not affiliated with Roblox Corporation.
   </footer>
