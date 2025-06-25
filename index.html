@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VEX.GG - Advanced Roblox Executor</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <style>
@@ -100,9 +100,16 @@
       margin-right: auto;
     }
 
-    .btn {
+    .btn-group {
       margin-top: 2.5rem;
-      padding: 1rem 3rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2.5rem;
       background: var(--accent);
       color: #000;
       font-weight: bold;
@@ -154,6 +161,21 @@
       color: #cceeff;
     }
 
+    #download {
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    #download h2 {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    #download a.btn {
+      margin-top: 1rem;
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -181,7 +203,10 @@
   <section class="hero">
     <h1>VEX.GG</h1>
     <p>Experience the most powerful and visually immersive Roblox executor on the web. Lightning fast. Stealthy. Designed for the elite.</p>
-    <a href="#download" class="btn">Download Now</a>
+    <div class="btn-group">
+      <a href="#download" class="btn">Download Now</a>
+      <a href="https://discord.gg/T7g9nvBMJB" target="_blank" class="btn">Join Discord</a>
+    </div>
   </section>
 
   <section class="feature-boxes" id="features">
@@ -195,8 +220,16 @@
     </div>
     <div class="feature-box">
       <h3>Community Forum</h3>
-      <p>Join discussions, get help, and share scripts with others on our built-in forum. <a style="display:block;margin-top:1rem;text-decoration:underline;font-weight:bold;" href="#">Visit Forum →</a></p>
+      <p>Join discussions, get help, and share scripts with others on our built-in forum. 
+        <a style="display:block;margin-top:1rem;text-decoration:underline;font-weight:bold;" href="#">Visit Forum →</a>
+      </p>
     </div>
+  </section>
+
+  <section id="download">
+    <h2>Download VEX.GG</h2>
+    <p>Click the button below to get started with the most advanced executor.</p>
+    <a href="#" class="btn">Download Now</a>
   </section>
 
   <footer>
