@@ -23,9 +23,10 @@
 
     body {
       font-family: 'Orbitron', sans-serif;
-      background: radial-gradient(circle at top left, #0e1a28, #06070a);
+      background: linear-gradient(135deg, #0e1a28, #06070a);
       color: var(--text);
       overflow: hidden;
+      position: relative;
     }
 
     canvas#background {
@@ -43,6 +44,8 @@
       background: rgba(5, 10, 20, 0.6);
       backdrop-filter: blur(20px);
       box-shadow: 0 0 30px var(--shadow);
+      z-index: 10;
+      position: relative;
     }
 
     .logo {
@@ -61,8 +64,19 @@
       transition: all 0.3s ease;
     }
 
-    nav a:hover {
-      color: var(--accent);
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      bottom: -4px;
+      left: 0;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     .hero {
@@ -71,15 +85,15 @@
     }
 
     .hero h1 {
-      font-size: 5rem;
+      font-size: 6rem;
       color: var(--accent);
-      text-shadow: 0 0 30px var(--shadow);
-      animation: pulseGlow 3s infinite alternate;
+      text-shadow: 0 0 40px var(--shadow);
+      animation: glowFlicker 2.5s infinite ease-in-out;
     }
 
     .hero p {
       margin-top: 1rem;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       color: #aad4e6;
       max-width: 800px;
       margin-left: auto;
@@ -96,12 +110,13 @@
       text-decoration: none;
       box-shadow: 0 0 25px var(--accent);
       transition: 0.3s ease;
+      font-size: 1.1rem;
     }
 
     .btn:hover {
       outline: 2px solid var(--hover-outline);
-      box-shadow: 0 0 50px var(--accent);
-      transform: scale(1.08);
+      box-shadow: 0 0 60px var(--accent);
+      transform: scale(1.12);
     }
 
     footer {
@@ -111,9 +126,9 @@
       color: #7c98ab;
     }
 
-    @keyframes pulseGlow {
-      0% { text-shadow: 0 0 10px var(--shadow); }
-      100% { text-shadow: 0 0 30px var(--shadow); }
+    @keyframes glowFlicker {
+      0%, 100% { text-shadow: 0 0 10px var(--shadow), 0 0 20px var(--accent), 0 0 30px var(--accent); }
+      50% { text-shadow: 0 0 30px var(--shadow), 0 0 40px var(--accent), 0 0 60px var(--accent); }
     }
   </style>
 </head>
@@ -165,16 +180,16 @@
       return arr;
     }
 
-    particles = createParticles(250);
+    particles = createParticles(350);
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
       for (let p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0,255,255,0.6)';
-        ctx.shadowColor = '#00ffff';
-        ctx.shadowBlur = 12;
+        ctx.fillStyle = 'rgba(0,255,255,0.5)';
+        ctx.shadowColor = '#0ff';
+        ctx.shadowBlur = 16;
         ctx.fill();
 
         p.x += p.dx;
