@@ -2,175 +2,162 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vex.gg - Roblox Executor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VEX.GG</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
     }
 
-    body, html {
-      height: 100%;
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0d0a1a;
       color: white;
       overflow-x: hidden;
-      background: #0c0c0c;
     }
 
-    .background {
+    canvas#bg {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #000000, #0f0f0f);
+      top: 0;
+      left: 0;
       z-index: -1;
     }
 
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -2;
-    }
-
-    header {
-      padding: 4rem 2rem 2rem;
+    .container {
       text-align: center;
-      background: rgba(0, 0, 0, 0.7);
+      padding: 100px 20px;
     }
 
-    header h1 {
-      font-size: 4rem;
-      color: #00ffcc;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 10px #00ffcc;
+    h1 {
+      font-size: 5rem;
+      color: #c770f0;
+      text-shadow: 0 0 20px #c770f0;
     }
 
-    header p {
+    p {
       font-size: 1.5rem;
-      color: #cccccc;
-      margin-bottom: 2rem;
+      color: #ccc;
+      margin: 20px 0;
     }
 
-    .btn {
-      padding: 1rem 2rem;
+    .button {
+      background: #c770f0;
+      color: #fff;
       font-size: 1.2rem;
-      margin: 1rem;
-      color: black;
-      background: #00ffcc;
+      padding: 15px 40px;
       border: none;
-      border-radius: 12px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px #c770f0;
       cursor: pointer;
-      box-shadow: 0 0 15px #00ffcc;
-      transition: 0.3s ease;
+      transition: 0.3s;
     }
 
-    .btn:hover {
-      background: #00c0a0;
-      box-shadow: 0 0 25px #00ffcc;
-    }
-
-    .section {
-      padding: 5rem 2rem;
-      text-align: center;
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    .section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #00ffcc;
-      text-shadow: 0 0 5px #00ffcc;
+    .button:hover {
+      background: #a44acc;
     }
 
     .features {
-      max-width: 900px;
-      margin: auto;
-      font-size: 1.2rem;
-      line-height: 2;
-      color: #cccccc;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 80px;
     }
 
-    footer {
-      padding: 1rem;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.6);
-      font-size: 0.9rem;
-      color: #888;
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(199, 112, 240, 0.4);
+      box-shadow: 0 0 20px #c770f0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 20px;
+      max-width: 300px;
+      color: #eee;
+    }
+
+    .feature-card h3 {
+      color: #c770f0;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
-  <div class="background"></div>
   <canvas id="bg"></canvas>
+  <div class="container">
+    <h1>VEX.GG</h1>
+    <p>Experience the most powerful and visually immersive Roblox executor on the web. Lightning fast. Stealthy. Designed for the elite.</p>
+    <button class="button">Download Now</button>
 
-  <header>
-    <h1>Vex.gg</h1>
-    <p>The Most Powerful Roblox Executor Ever</p>
-    <button class="btn" onclick="window.location.href='YOUR_DOWNLOAD_LINK_HERE'">🚀 Download Vex.gg</button>
-    <button class="btn" onclick="window.location.href='https://discord.gg/YOUR_DISCORD_INVITE'">💬 Join Our Discord</button>
-  </header>
-
-  <section class="section">
-    <h2>Why Vex.gg?</h2>
     <div class="features">
-      ✅ Blazing Fast Injection Engine<br>
-      ✅ Bypasses Most Anti-Cheat Systems<br>
-      ✅ LuaU & Synapse-Compatible<br>
-      ✅ Modern & Clean User Interface<br>
-      ✅ Safe, Secure, and 100% Free<br>
-      ✅ Frequent Updates with New Features<br>
-      ✅ Supported by a Friendly Community
+      <div class="feature-card">
+        <h3>Undetectable</h3>
+        <p>Bypasses the latest Roblox updates and anti-cheats with stealth-mode technology.</p>
+      </div>
+      <div class="feature-card">
+        <h3>High Performance</h3>
+        <p>Optimized executor core delivers ultra-fast script execution with low latency.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Community Forum</h3>
+        <p>Join discussions, get help, and share scripts with others on our built-in forum.</p>
+      </div>
     </div>
-  </section>
-
-  <footer>
-    &copy; 2025 Vex.gg. All rights reserved.
-  </footer>
+  </div>
 
   <script>
-    const canvas = document.getElementById("bg");
-    const ctx = canvas.getContext("2d");
+    // Simple animated particle background
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    let particles = [];
-    for (let i = 0; i < 100; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 1,
-        speedX: (Math.random() - 0.5) * 1,
-        speedY: (Math.random() - 0.5) * 1
-      });
-    }
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
 
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
+    const createParticles = () => {
+      particlesArray = [];
+      const count = 100;
+      for (let i = 0; i < count; i++) {
+        particlesArray.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 3 + 1,
+          speedX: Math.random() * 1 - 0.5,
+          speedY: Math.random() * 1 - 0.5,
+        });
+      }
+    };
+
+    const animate = () => {
+      ctx.fillStyle = '#0d0a1a';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#c770f0';
+      particlesArray.forEach(p => {
         p.x += p.speedX;
         p.y += p.speedY;
 
-        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.y > canvas.height) p.y = 0;
+        if (p.y < 0) p.y = canvas.height;
 
-        ctx.fillStyle = '#00ffcc';
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
       });
-      requestAnimationFrame(animateParticles);
-    }
 
-    animateParticles();
+      requestAnimationFrame(animate);
+    };
 
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
+    createParticles();
+    animate();
   </script>
 </body>
 </html>
