@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VEX.GG</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -12,10 +12,11 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
+      height: 100%;
+      background: #0b0615;
       font-family: 'Orbitron', sans-serif;
-      background-color: #0d0a1a;
-      color: white;
+      color: #fff;
       overflow-x: hidden;
     }
 
@@ -26,120 +27,147 @@
       z-index: -1;
     }
 
-    .container {
+    header {
       text-align: center;
-      padding: 100px 20px;
+      padding-top: 100px;
+      padding-bottom: 50px;
+      animation: fadeIn 1.5s ease;
     }
 
-    h1 {
+    header h1 {
       font-size: 5rem;
-      color: #c770f0;
-      text-shadow: 0 0 20px #c770f0;
+      color: #d76bff;
+      text-shadow: 0 0 25px #d76bff;
     }
 
-    p {
-      font-size: 1.5rem;
+    header p {
+      max-width: 800px;
+      margin: 20px auto;
+      font-size: 1.3rem;
       color: #ccc;
-      margin: 20px 0;
     }
 
-    .button {
-      background: #c770f0;
-      color: #fff;
-      font-size: 1.2rem;
-      padding: 15px 40px;
+    .download-btn {
+      margin-top: 30px;
+      background: #d76bff;
       border: none;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      color: #fff;
       border-radius: 8px;
-      box-shadow: 0 0 20px #c770f0;
+      box-shadow: 0 0 15px #d76bff;
       cursor: pointer;
-      transition: 0.3s;
+      transition: background 0.3s;
     }
 
-    .button:hover {
-      background: #a44acc;
+    .download-btn:hover {
+      background: #b244d2;
     }
 
     .features {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 80px;
+      margin: 80px 20px;
+      gap: 40px;
+      animation: fadeIn 2s ease;
     }
 
     .feature-card {
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(199, 112, 240, 0.4);
-      box-shadow: 0 0 20px #c770f0;
-      border-radius: 12px;
+      border: 1px solid rgba(215, 107, 255, 0.2);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 0 25px rgba(215, 107, 255, 0.4);
+      border-radius: 16px;
       padding: 30px;
-      margin: 20px;
-      max-width: 300px;
-      color: #eee;
+      width: 300px;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
     }
 
     .feature-card h3 {
-      color: #c770f0;
+      color: #d76bff;
       margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      color: #ddd;
+      font-size: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media screen and (max-width: 768px) {
+      header h1 {
+        font-size: 3rem;
+      }
+
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
   <canvas id="bg"></canvas>
-  <div class="container">
+
+  <header>
     <h1>VEX.GG</h1>
     <p>Experience the most powerful and visually immersive Roblox executor on the web. Lightning fast. Stealthy. Designed for the elite.</p>
-    <button class="button">Download Now</button>
+    <button class="download-btn">Download Now</button>
+  </header>
 
-    <div class="features">
-      <div class="feature-card">
-        <h3>Undetectable</h3>
-        <p>Bypasses the latest Roblox updates and anti-cheats with stealth-mode technology.</p>
-      </div>
-      <div class="feature-card">
-        <h3>High Performance</h3>
-        <p>Optimized executor core delivers ultra-fast script execution with low latency.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Community Forum</h3>
-        <p>Join discussions, get help, and share scripts with others on our built-in forum.</p>
-      </div>
+  <section class="features">
+    <div class="feature-card">
+      <h3>Undetectable</h3>
+      <p>Bypasses the latest Roblox updates and anti-cheats using advanced stealth-mode tech.</p>
     </div>
-  </div>
+    <div class="feature-card">
+      <h3>High Performance</h3>
+      <p>Lightning-fast script execution with a highly optimized, low-latency core engine.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Community Forum</h3>
+      <p>Join discussions, get help, and share scripts in our exclusive VEX.GG online community.</p>
+    </div>
+  </section>
 
   <script>
-    // Simple animated particle background
     const canvas = document.getElementById('bg');
     const ctx = canvas.getContext('2d');
-    let particlesArray;
+    let particles = [];
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
+    function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-    });
+    }
 
-    const createParticles = () => {
-      particlesArray = [];
-      const count = 100;
-      for (let i = 0; i < count; i++) {
-        particlesArray.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 3 + 1,
-          speedX: Math.random() * 1 - 0.5,
-          speedY: Math.random() * 1 - 0.5,
-        });
-      }
-    };
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-    const animate = () => {
-      ctx.fillStyle = '#0d0a1a';
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2 + 1,
+        speedX: Math.random() * 1 - 0.5,
+        speedY: Math.random() * 1 - 0.5,
+      });
+    }
+
+    function animate() {
+      ctx.fillStyle = '#0b0615';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#c770f0';
-      particlesArray.forEach(p => {
+      ctx.fillStyle = '#d76bff';
+      particles.forEach(p => {
         p.x += p.speedX;
         p.y += p.speedY;
 
@@ -154,9 +182,8 @@
       });
 
       requestAnimationFrame(animate);
-    };
+    }
 
-    createParticles();
     animate();
   </script>
 </body>
